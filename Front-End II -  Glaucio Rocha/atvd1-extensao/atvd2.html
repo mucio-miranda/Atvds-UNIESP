@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang='ptbr'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>R14</title>
+</head>
+<body>
+    <h1 id= "Resultado"></h1>
+    <script>
+        let a = window.prompt("Insira o valor de A:");
+        a = Number(a);
+        let b = window.prompt("Insira o valor de B:");
+        b = Number(b);
+        let c = window.prompt("Insira o valor de C:");
+        c = Number(c);
+
+
+        delta = (b**2)-(4*a*c)
+        delta = Number(delta)
+
+        if (delta > 0){
+            document.getElementById("Resultado").textContent = "Delta é maior que zero.";
+        }
+        else if (delta < 0){
+            document.getElementById("Resultado").textContent = "Delta é menor que zero.";
+        }
+        else {
+            document.getElementById("Resultado").textContent = "Delta é igual zero.";
+        }
+
+
+    </script>
+</body>
+</html>
