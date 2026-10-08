@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TED 1 - Pesquisa de mercado</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Mercado Dev: linguagens, salários e requisitos</h1>
+    <p id="meta"></p>
+    <button id="tema" type="button">Alternar tema</button>
+  </header>
+
+  <main>
+    <section>
+      <h2>Top 10 linguagens</h2>
+      <div id="ranking"></div>
+    </section>
+
+    <section>
+      <h2>Salários por nível (R$/mês)</h2>
+      <div id="salarios"></div>
+    </section>
+
+    <section>
+      <h2>Requisitos mais pedidos</h2>
+      <div class="filtros">
+        <select id="f-tech"><option value="">Todas as tecnologias</option></select>
+        <select id="f-nivel"><option value="">Todos os níveis</option></select>
+      </div>
+      <div id="requisitos"></div>
+    </section>
+
+    <section>
+      <h2>Vagas coletadas</h2>
+      <input id="busca" type="search" placeholder="Buscar vaga, empresa ou requisito">
+      <div id="vagas"></div>
+    </section>
+
+    <section id="nova-busca">
+      <h2>Nova busca (Adzuna)</h2>
+      <p class="vazio">Busca vagas atuais pela API oficial da Adzuna e extrai os requisitos dos trechos das descrições. Veja o TUTORIAL.md.</p>
+      <p id="busca-aviso" class="vazio"></p>
+
+      <div id="config-box" hidden>
+        <p>Cadastre suas chaves gratuitas em <a href="https://developer.adzuna.com/" target="_blank" rel="noopener noreferrer">developer.adzuna.com</a>. Elas ficam só neste computador.</p>
+        <form id="form-config" class="form-linha">
+          <label>app_id <input id="cfg-id" type="text" autocomplete="off" required></label>
+          <label>app_key <input id="cfg-key" type="password" autocomplete="off" required></label>
+          <button type="submit">Salvar chaves</button>
+        </form>
+      </div>
+
+      <form id="form-busca" class="form-linha" hidden>
+        <label>O que buscar <input id="q-what" type="text" value="desenvolvedor react" required maxlength="100"></label>
+        <label>Onde <input id="q-where" type="text" placeholder="João Pessoa (vazio = Brasil)" maxlength="100"></label>
+        <label>Publicadas nos últimos
+          <select id="q-dias">
+            <option value="7">7 dias</option>
+            <option value="30" selected>30 dias</option>
+            <option value="90">90 dias</option>
+            <option value="0">sem limite</option>
+          </select>
+        </label>
+        <label>Páginas
+          <select id="q-paginas">
+            <option value="1" selected>1 (até 50 vagas)</option>
+            <option value="2">2 (até 100)</option>
+            <option value="3">3 (até 150)</option>
+          </select>
+        </label>
+        <label class="marcar"><input id="q-foco" type="checkbox" checked> Só JavaScript, React ou Node</label>
+        <button id="btn-buscar" type="submit">Buscar</button>
+      </form>
+
+      <p><select id="historico"><option value="">Buscas anteriores...</option></select>
+        <button id="limpar-config" type="button" hidden>Remover chaves</button></p>
+
+      <p id="busca-resumo"></p>
+      <div id="busca-ranking"></div>
+      <div id="busca-lista"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="busca.js"></script>
+</body>
+</html>

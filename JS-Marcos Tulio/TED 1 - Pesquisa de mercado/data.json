@@ -1,0 +1,257 @@
+{
+  "meta": {
+    "atualizado_em": "2026-10-08",
+    "regiao": "Brasil (home office) e João Pessoa/PB (presencial e híbrido)",
+    "status": "parcial: ranking com 1 fonte (TIOBE); 23 vagas do LinkedIn e 1 do Programathor coletadas em 08/10/2026; salários triangulados em 4 fontes"
+  },
+  "linguagens": [
+    { "pos": 1, "nome": "Python", "pct": 17.76, "fonte": "TIOBE set/2026" },
+    { "pos": 2, "nome": "C", "pct": 10.28, "fonte": "TIOBE set/2026" },
+    { "pos": 3, "nome": "C++", "pct": 8.67, "fonte": "TIOBE set/2026" },
+    { "pos": 4, "nome": "Java", "pct": 7.54, "fonte": "TIOBE set/2026" },
+    { "pos": 5, "nome": "C#", "pct": 4.22, "fonte": "TIOBE set/2026" },
+    { "pos": 6, "nome": "JavaScript", "pct": 2.76, "fonte": "TIOBE set/2026" },
+    { "pos": 7, "nome": "Visual Basic", "pct": 2.55, "fonte": "TIOBE set/2026" },
+    { "pos": 8, "nome": "SQL", "pct": 2.16, "fonte": "TIOBE set/2026" },
+    { "pos": 9, "nome": "R", "pct": 1.69, "fonte": "TIOBE set/2026" },
+    { "pos": 10, "nome": "Rust", "pct": 1.34, "fonte": "TIOBE set/2026" }
+  ],
+  "salarios": [
+    {
+      "nivel": "Júnior", "min": 3249, "mediana": 4349, "max": 5892,
+      "escopo": "Front-end, nacional, P25-P75, 32 salários informados por profissionais (2026)", "fonte": "Salário Transparente"
+    },
+    {
+      "nivel": "Júnior", "min": 6050, "mediana": 6850, "max": 8750,
+      "escopo": "Front-end, nacional, P25-P75, profissionais colocados pela empresa (2026)", "fonte": "Robert Half"
+    },
+    {
+      "nivel": "Pleno", "min": 7055, "mediana": 9345, "max": 10768,
+      "escopo": "Front-end, nacional, P25-P75, 66 salários informados por profissionais (2026)", "fonte": "Salário Transparente"
+    },
+    {
+      "nivel": "Pleno", "min": 9400, "mediana": 12300, "max": 15800,
+      "escopo": "Front-end, nacional, P25-P75, profissionais colocados pela empresa (2026)", "fonte": "Robert Half"
+    },
+    {
+      "nivel": "Sênior", "min": 11808, "mediana": 13500, "max": 16331,
+      "escopo": "Front-end, nacional, P25-P75, 55 salários informados por profissionais (2026)", "fonte": "Salário Transparente"
+    },
+    {
+      "nivel": "Sênior", "min": 12450, "mediana": 14700, "max": 18200,
+      "escopo": "Front-end, nacional, P25-P75, profissionais colocados pela empresa (2026)", "fonte": "Robert Half"
+    },
+    {
+      "nivel": "Tech Lead", "min": 14000, "mediana": null, "max": 22000,
+      "escopo": "Brasil, faixa atribuída ao CAGED (fonte original não conferida)", "fonte": "Serasa Experian"
+    },
+    {
+      "nivel": "Tech Lead", "min": 18000, "mediana": null, "max": 30000,
+      "escopo": "Brasil, estimativa de blog", "fonte": "JobRise"
+    },
+    {
+      "nivel": "Geral - João Pessoa", "min": 2173, "mediana": 4170, "max": 7999,
+      "escopo": "Programador e Desenvolvedor, média de 7 salários (ago/2025)", "fonte": "Indeed"
+    }
+  ],
+  "salarios_joao_pessoa_vagas": [
+    {
+      "titulo": "Desenvolvedor Front-end Pleno (HTML, CSS, JavaScript)", "empresa": "Intern Brazil",
+      "modalidade": "Presencial", "contrato": "PJ", "salario_ate": 6000, "fonte": "programathor"
+    }
+  ],
+  "salarios_por_tecnologia_senior": [
+    { "tecnologia": "JavaScript", "mediana": 9840.5, "fonte": "Trybe" },
+    { "tecnologia": "React", "mediana": 12050.25, "fonte": "Trybe" },
+    { "tecnologia": "Node.js", "mediana": 9334.5, "fonte": "Trybe" }
+  ],
+  "vagas": [
+    {
+      "id": "4472917380", "titulo": "Pessoa Desenvolvedora de Software Júnior", "empresa": "Smartspace",
+      "nivel": "Júnior", "modalidade": "Híbrido", "cidade": "João Pessoa/PB", "fonte": "linkedin",
+      "tecnologias": ["JavaScript", "React", "Node.js"],
+      "requisitos": ["JavaScript", "TypeScript", "React", "Node.js", "HTML/CSS", "REST APIs", "Git", "Bancos de dados", "Ensino superior"],
+      "desejaveis": ["Docker/Containers", "Ferramentas de IA"]
+    },
+    {
+      "id": "4471755379", "titulo": "UI Software Developer", "empresa": "Telit Cinterion",
+      "nivel": "Sênior", "modalidade": "Remoto", "cidade": "Brasil", "fonte": "linkedin",
+      "anos_experiencia": "7+",
+      "tecnologias": ["JavaScript"],
+      "requisitos": ["JavaScript", "TypeScript", "Angular", "HTML/CSS", "REST APIs", "Git", "Inglês", "Testes automatizados", "Linux", "Ensino superior"],
+      "desejaveis": ["CI/CD", "Docker/Containers", "Cloud (AWS/GCP/Azure)"]
+    },
+    {
+      "id": "4467867617", "titulo": "Desenvolvedor Frontend Júnior", "empresa": "PicPay",
+      "nivel": "Júnior", "modalidade": "Remoto", "cidade": "São Paulo e região (remoto)", "fonte": "linkedin",
+      "tecnologias": ["JavaScript"],
+      "requisitos": ["Angular", "TypeScript", "JavaScript", "HTML/CSS", "REST APIs", "Git", "Ensino superior"],
+      "desejaveis": ["Testes automatizados", "CI/CD", "Metodologias ágeis"]
+    },
+    {
+      "id": "4475566167", "titulo": "Frontend Developer", "empresa": "ecoPortal",
+      "nivel": "Pleno", "modalidade": "Remoto", "cidade": "América Latina", "fonte": "linkedin",
+      "anos_experiencia": "3+",
+      "tecnologias": ["React"],
+      "requisitos": ["React", "Next.js", "Ferramentas de IA", "Metodologias ágeis"],
+      "desejaveis": ["Angular"]
+    },
+    {
+      "id": "4286647448", "titulo": "Web Frontend Engineer - JS, CSS, React, Flutter", "empresa": "Canonical",
+      "nivel": "Júnior", "modalidade": "Remoto", "cidade": "América Latina", "fonte": "linkedin",
+      "tecnologias": ["JavaScript", "React"],
+      "requisitos": ["JavaScript", "TypeScript", "React", "HTML/CSS", "Inglês", "Acessibilidade", "Performance", "Linux", "Ensino superior"],
+      "desejaveis": ["Docker/Containers", "REST APIs"],
+      "salario": "USD 48-70 mil/ano (candidatos baseados nos EUA, nível de entrada)"
+    },
+    {
+      "id": "4466349257", "titulo": "JavaScript Frontend Developer (Remote)", "empresa": "Hire Feed",
+      "nivel": "Não informado", "modalidade": "Remoto", "cidade": "Brasil", "fonte": "linkedin",
+      "tecnologias": ["JavaScript", "React", "Node.js"],
+      "requisitos": ["JavaScript", "React", "Angular", "Vue.js", "Node.js", "REST APIs", "Git"],
+      "desejaveis": []
+    },
+    {
+      "id": "4466348101", "titulo": "Frontend Engineer (Remote)", "empresa": "Hired",
+      "nivel": "Não informado", "modalidade": "Remoto", "cidade": "Brasil", "fonte": "linkedin",
+      "tecnologias": ["JavaScript", "React"],
+      "requisitos": ["JavaScript", "HTML/CSS", "React", "Vue.js", "Angular", "Acessibilidade", "Gerenciamento de estado", "Git", "Build tools", "REST APIs", "Testes automatizados"],
+      "desejaveis": []
+    },
+    {
+      "id": "4474992064", "titulo": "Desenvolvedor React Junior", "empresa": "BairesDev",
+      "nivel": "Júnior", "modalidade": "Remoto", "cidade": "Brasil", "fonte": "linkedin",
+      "anos_experiencia": "1",
+      "tecnologias": ["JavaScript", "React"],
+      "requisitos": ["React", "JavaScript", "Algoritmos e estruturas de dados", "Git", "Inglês"],
+      "desejaveis": []
+    },
+    {
+      "id": "4472839149", "titulo": "PL/SR Front-end Developer (React)", "empresa": "ília",
+      "nivel": "Pleno/Sênior", "modalidade": "Remoto", "cidade": "Brasil", "fonte": "linkedin",
+      "tecnologias": ["JavaScript", "React"],
+      "requisitos": ["React", "TypeScript", "JavaScript", "HTML/CSS", "REST APIs", "UX/UI", "Git", "Inglês"],
+      "desejaveis": ["Angular", "Experiência em fintech"]
+    },
+    {
+      "id": "4466617981", "titulo": "Software Developer Full Stack (React/Node)", "empresa": "SendFlow",
+      "nivel": "Pleno", "modalidade": "Remoto", "cidade": "Brasil", "fonte": "linkedin",
+      "anos_experiencia": "3+", "contrato": "PJ",
+      "tecnologias": ["JavaScript", "React", "Node.js"],
+      "requisitos": ["JavaScript", "TypeScript", "React", "Node.js", "Firebase", "Bancos de dados", "Tailwind CSS", "REST APIs", "Git", "Metodologias ágeis"],
+      "desejaveis": ["CI/CD", "Cloud (AWS/GCP/Azure)", "Ferramentas de IA"]
+    },
+    {
+      "id": "4474989597", "titulo": "Desenvolvedor Fullstack Sênior (Node e React)", "empresa": "Premiersoft",
+      "nivel": "Sênior", "modalidade": "Remoto", "cidade": "Brasil", "fonte": "linkedin",
+      "tecnologias": ["JavaScript", "React", "Node.js"],
+      "requisitos": ["React", "Node.js", "JavaScript", "TypeScript", "Cloud (AWS/GCP/Azure)", "Observabilidade", "Performance", "CI/CD", "Testes automatizados"],
+      "desejaveis": []
+    },
+    {
+      "id": "4476778261", "titulo": "Node.js Junior Developer", "empresa": "INDI Staffing Services",
+      "nivel": "Júnior", "modalidade": "Remoto", "cidade": "América Latina", "fonte": "linkedin",
+      "anos_experiencia": "1+",
+      "tecnologias": ["JavaScript", "Node.js"],
+      "requisitos": ["Node.js", "JavaScript", "Algoritmos e estruturas de dados", "Git"],
+      "desejaveis": ["Inglês"]
+    },
+    {
+      "id": "4466915535", "titulo": "Desenvolvedor Full Stack Pleno", "empresa": "Verx Tecnologia e Inovação",
+      "nivel": "Pleno", "modalidade": "Remoto", "cidade": "Brasil", "fonte": "linkedin",
+      "contrato": "PJ",
+      "tecnologias": ["JavaScript", "React", "Node.js"],
+      "requisitos": ["React", "Vue.js", "Angular", "JavaScript", "HTML/CSS", "TypeScript", "Bancos de dados", "REST APIs", "Testes automatizados", "Inglês"],
+      "desejaveis": ["Node.js", "CI/CD", "Docker/Containers", "Cloud (AWS/GCP/Azure)"]
+    },
+    {
+      "id": "4460202243", "titulo": "Desenvolvedor(a) Front End Pleno - React", "empresa": "Frete.com",
+      "nivel": "Pleno", "modalidade": "Remoto", "cidade": "Brasil", "fonte": "linkedin",
+      "tecnologias": ["JavaScript", "React"],
+      "requisitos": ["React", "Next.js", "Micro frontends", "REST APIs", "Build tools", "HTML/CSS", "JavaScript", "TypeScript", "Testes automatizados", "Boas práticas (Clean Code, SOLID)", "Segurança", "Docker/Containers", "Observabilidade", "Git"],
+      "desejaveis": ["Micro frontends", "Testes de integração"]
+    },
+    {
+      "id": "4409728170", "titulo": "Senior Frontend/UI Engineer", "empresa": "Avenue Code",
+      "nivel": "Sênior", "modalidade": "Remoto", "cidade": "Brasil", "fonte": "linkedin",
+      "anos_experiencia": "5+",
+      "tecnologias": ["JavaScript", "React", "Node.js"],
+      "requisitos": ["JavaScript", "React", "Next.js", "Node.js", "HTML/CSS", "Gerenciamento de estado", "REST APIs", "CI/CD", "Git", "Build tools", "Inglês"],
+      "desejaveis": ["GraphQL", "Testes automatizados", "Cloud (AWS/GCP/Azure)", "Micro frontends"]
+    },
+    {
+      "id": "4474986646", "titulo": "Desenvolvedor Fullstack Sr (C#/.NET e React)", "empresa": "i4Pro",
+      "nivel": "Sênior", "modalidade": "Remoto", "cidade": "Brasil", "fonte": "linkedin",
+      "tecnologias": ["React"],
+      "requisitos": ["React", ".NET/C#", "REST APIs", "Docker/Containers", "Bancos de dados", "Git", "CI/CD", "Testes automatizados", "Mensageria", "Ferramentas de IA", "Ensino superior"],
+      "desejaveis": ["TypeScript", "Next.js", "Cloud (AWS/GCP/Azure)"]
+    },
+    {
+      "id": "4464569987", "titulo": "Desenvolvimento Full-Stack (Front-End) Sênior", "empresa": "DBC Company",
+      "nivel": "Sênior", "modalidade": "Remoto", "cidade": "Brasil", "fonte": "linkedin",
+      "anos_experiencia": "5+",
+      "tecnologias": ["React"],
+      "requisitos": ["React", "REST APIs", "Testes automatizados", "Git", "CI/CD", "Docker/Containers", "Acessibilidade", "Inglês"],
+      "desejaveis": ["GraphQL", "Java"]
+    },
+    {
+      "id": "4469301369", "titulo": "Junior/Pleno Front-End Engineer", "empresa": "Conviso Application Security",
+      "nivel": "Júnior/Pleno", "modalidade": "Remoto", "cidade": "Brasil", "fonte": "linkedin",
+      "tecnologias": ["JavaScript"],
+      "requisitos": ["JavaScript", "TypeScript", "Vue.js", "React", "Angular", "HTML/CSS", "REST APIs", "GraphQL", "Testes automatizados", "Git", "Inglês"],
+      "desejaveis": ["Acessibilidade", "Performance"]
+    },
+    {
+      "id": "4474622684", "titulo": "Pessoa Desenvolvedora Fullstack SR", "empresa": "Zallpy Digital",
+      "nivel": "Sênior", "modalidade": "Remoto", "cidade": "Brasil", "fonte": "linkedin",
+      "tecnologias": ["Node.js"],
+      "requisitos": ["TypeScript", "Node.js", "Git", "CI/CD", "Bancos de dados", "REST APIs", "Ferramentas de IA"],
+      "desejaveis": ["Cloud (AWS/GCP/Azure)"]
+    },
+    {
+      "id": "4474357055", "titulo": "Senior Node Fullstack Developer", "empresa": "BairesDev",
+      "nivel": "Sênior", "modalidade": "Remoto", "cidade": "Brasil", "fonte": "linkedin",
+      "anos_experiencia": "5+",
+      "tecnologias": ["JavaScript", "React", "Node.js"],
+      "requisitos": ["Node.js", "React", "TypeScript", "REST APIs", "Gerenciamento de estado", "Bancos de dados", "Inglês"],
+      "desejaveis": ["Cloud (AWS/GCP/Azure)", "Docker/Containers"]
+    },
+    {
+      "id": "4474355203", "titulo": "Senior Full Stack Developer - React + Node", "empresa": "BairesDev",
+      "nivel": "Sênior", "modalidade": "Remoto", "cidade": "Brasil", "fonte": "linkedin",
+      "anos_experiencia": "5+",
+      "tecnologias": ["JavaScript", "React", "Node.js"],
+      "requisitos": ["React", "TypeScript", "Node.js", "REST APIs", "Gerenciamento de estado", "Bancos de dados", "Inglês"],
+      "desejaveis": ["Cloud (AWS/GCP/Azure)", "Docker/Containers"]
+    },
+    {
+      "id": "4473815250", "titulo": "Desenvolvedor Front End", "empresa": "Beta Online",
+      "nivel": "Não informado", "modalidade": "Remoto", "cidade": "Brasil", "fonte": "linkedin",
+      "contrato": "PJ",
+      "tecnologias": ["JavaScript", "React", "Node.js"],
+      "requisitos": ["React", "Next.js", "TypeScript", "Node.js", "HTML/CSS", "Git", "Docker/Containers", "Ferramentas de IA"],
+      "desejaveis": []
+    },
+    {
+      "id": "4474449592", "titulo": "Full Stack Developer (MEAN)", "empresa": "Interfell",
+      "nivel": "Pleno", "modalidade": "Remoto", "cidade": "América Latina", "fonte": "linkedin",
+      "anos_experiencia": "4+", "contrato": "Contractor",
+      "tecnologias": ["JavaScript", "Node.js"],
+      "requisitos": ["JavaScript", "TypeScript", "Node.js", "Angular", "REST APIs", "Bancos de dados", "Cloud (AWS/GCP/Azure)", "Ferramentas de IA"],
+      "desejaveis": ["React"],
+      "salario": "USD 2.000-2.100/mês (contractor, América Latina)"
+    },
+    {
+      "id": "programathor-intern-brazil-frontend-pleno", "titulo": "Desenvolvedor(a) Front-end Pleno", "empresa": "Intern Brazil",
+      "nivel": "Pleno", "modalidade": "Presencial", "cidade": "João Pessoa/PB", "fonte": "programathor",
+      "contrato": "PJ",
+      "tecnologias": ["JavaScript"],
+      "requisitos": ["HTML/CSS", "JavaScript"],
+      "desejaveis": [],
+      "salario": "Até R$ 6.000/mês (PJ)"
+    }
+  ],
+  "excluidas": [
+    { "id": "4475723093", "empresa": "Dock", "motivo": "Vaga de Java (Spring Boot); Node.js e Vue só como noções desejáveis" }
+  ]
+}

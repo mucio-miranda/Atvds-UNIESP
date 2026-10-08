@@ -1,0 +1,4 @@
+# Chaves da Adzuna e histórico de buscas ficam só no computador de quem usa
+config.local.json
+buscas.local.json
+node_modules/
