@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Moeda</title>
+</head>
+<body>
+    <h1>Conversor de Moeda</h1>
+    <p>Converta BRL em USD.</p>
+    <div>
+        <p>Digite o valor em BRL e clique no botão para converter.</p>
+        <input type="number" id="valorBRL" placeholder="Valor em BRL">
+        <button onclick="converter()">Converter</button>
+        <p id="resultado"></p>
+    </div>
+    <script>
+        function converter() {
+            var valorBRL = parseFloat(document.getElementById("valorBRL").value);
+            if (isNaN(valorBRL)) {
+                document.getElementById("resultado").innerHTML = "Digite um valor válido.";
+                return;
+            }
+            var valorUSD = valorBRL / 5.12; // Supondo uma taxa de câmbio de 1 USD = 5.12 BRL
+            document.getElementById("resultado").innerHTML = "Valor em USD: $" + valorUSD.toFixed(2);
+        }
+    </script>
+</body>
+</html>

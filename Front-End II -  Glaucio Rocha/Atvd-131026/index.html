@@ -1,0 +1,26 @@
+<html>
+<body>
+    <h1>Sistema de eventos no mouse</h1>
+    <p>Este é um exemplo simples de sistema de eventos no mouse.</p>
+<div id="area" style="width: 300px; height: 300px; background-color: lightblue; border: 1px solid black;">
+        Passe o mouse sobre esta área.
+    </div>
+    <script>
+        var clique = window.document.getElementById("area");
+        clique.addEventListener("click", clicar);
+        clique.addEventListener("mouseover", entrar);
+        clique.addEventListener("mouseout", sair);
+        function clicar() {
+            clique.style.backgroundColor = "lightgreen";
+            clique.innerHTML = "Você clicou na área!";
+        }
+        function entrar() {
+            clique.style.backgroundColor = "lightgreen";
+            clique.innerHTML = "Você passou o mouse sobre a área!";
+        }
+        function sair() {
+            clique.style.backgroundColor = "lightblue";
+            clique.innerHTML = "Passe o mouse sobre esta área.";    
+        }
+    </script>
+</html>
