@@ -38,6 +38,7 @@ body {
         0 0 0 2px #000,
         0 0 40px rgba(255, 30, 45, 0.25),
         0 40px 60px rgba(0, 0, 0, 0.8);
+    position: relative;
 }
 
 /* ================= MARQUEE ================= */
@@ -645,6 +646,169 @@ kbd {
     font-family: 'Press Start 2P', monospace;
     font-size: 7px;
     color: #666;
+}
+
+/* ================= INCÊNDIO ================= */
+.cabinet.tremendo {
+    animation: tremer 0.12s linear infinite;
+}
+
+@keyframes tremer {
+    25% { transform: translate(-2px, 1px) rotate(-0.3deg); }
+    75% { transform: translate(2px, -1px) rotate(0.3deg); }
+}
+
+/* tudo menos o fogo fica carbonizado */
+.cabinet > *:not(.fogo) {
+    transition: filter 2.5s ease-in;
+}
+
+.cabinet.queimada > *:not(.fogo) {
+    filter: sepia(0.8) brightness(0.35) contrast(1.4);
+}
+
+.cabinet.queimada {
+    border-color: #2a0d00;
+    box-shadow: 0 0 0 2px #000, 0 0 90px rgba(255, 90, 0, 0.8);
+}
+
+.screen.glitch {
+    animation: glitch 0.2s steps(2) infinite;
+}
+
+@keyframes glitch {
+    0%   { transform: translate(0); filter: hue-rotate(0deg); }
+    50%  { transform: translate(-3px, 2px) skewX(4deg); filter: hue-rotate(90deg) saturate(3); }
+    100% { transform: translate(3px, -1px); filter: hue-rotate(-60deg); }
+}
+
+/* tela de tubo apagando: vira uma linha e depois um ponto */
+.screen.desligada {
+    animation: crt-off 0.6s ease-in forwards;
+}
+
+@keyframes crt-off {
+    0%   { transform: scale(1, 1); filter: brightness(1); }
+    50%  { transform: scale(1, 0.01); filter: brightness(4); }
+    100% { transform: scale(0, 0.01); filter: brightness(0); }
+}
+
+.fogo {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.chama,
+.fumaca {
+    position: absolute;
+    transform-origin: 50% 100%;
+}
+
+.chama {
+    background: radial-gradient(ellipse at 50% 85%,
+        #fffbd0 0%, #ffd23f 20%, #ff7b00 45%, rgba(255, 30, 0, 0.7) 60%, transparent 72%);
+    border-radius: 50% 50% 35% 35% / 65% 65% 35% 35%;
+    filter: blur(1.5px);
+    mix-blend-mode: screen;
+    animation: acender 0.5s ease-out, labareda 0.35s ease-in-out infinite alternate;
+}
+
+.fumaca {
+    background: radial-gradient(circle, rgba(70, 70, 70, 0.7) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(4px);
+    animation: acender 0.5s ease-out, subir 2.5s ease-out infinite;
+}
+
+@keyframes acender {
+    from { transform: scale(0); }
+}
+
+@keyframes labareda {
+    from { transform: scale(1, 1) skewX(-4deg); }
+    to   { transform: scale(0.9, 1.25) skewX(5deg); opacity: 0.85; }
+}
+
+@keyframes subir {
+    from { transform: translateY(0) scale(0.6); opacity: 0.8; }
+    to   { transform: translateY(-140px) scale(1.8); opacity: 0; }
+}
+
+/* ================= GAME OVER ================= */
+.game-over {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    padding: 16px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    animation: escurecer 0.8s ease-out;
+}
+
+.game-over.oculto {
+    display: none;
+}
+
+@keyframes escurecer {
+    from { opacity: 0; }
+}
+
+.game-over-titulo {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(30px, 10vw, 64px);
+    color: var(--vermelho);
+    text-shadow:
+        4px 4px 0 #000,
+        0 0 20px var(--vermelho),
+        0 0 40px #ff6a00;
+    animation: blink 1.2s steps(1) infinite;
+}
+
+.game-over-sub {
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #ffd9a0;
+}
+
+.btn-recomecar {
+    padding: 16px 26px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    color: #fff;
+    background: linear-gradient(180deg, #ff5a5a, #b3000c);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow:
+        0 0 0 3px #cfcfcf,
+        0 0 0 5px #111,
+        0 7px 0 4px #5a0006,
+        0 0 25px rgba(255, 30, 45, 0.7);
+    transition: transform 0.06s, box-shadow 0.06s;
+}
+
+.btn-recomecar:hover {
+    filter: brightness(1.15);
+}
+
+.btn-recomecar:active {
+    transform: translateY(6px);
+    box-shadow:
+        0 0 0 3px #cfcfcf,
+        0 0 0 5px #111,
+        0 1px 0 4px #5a0006,
+        0 0 35px rgba(255, 30, 45, 0.9);
+}
+
+.game-over kbd {
+    font-size: 16px;
 }
 
 /* ================= RESPONSIVO ================= */

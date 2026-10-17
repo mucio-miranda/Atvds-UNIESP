@@ -45,6 +45,10 @@ const btnConfirma = document.getElementById('btnConfirma');
 const instrucao = document.getElementById('instrucao');
 const impressora = document.getElementById('impressora');
 const btnNulo = document.getElementById('btnNulo');
+const cabinet = document.querySelector('.cabinet');
+const fogo = document.getElementById('fogo');
+const gameOver = document.getElementById('gameOver');
+const btnRecomecar = document.getElementById('btnRecomecar');
 
 let linhaStatus;        // linha de status da tela
 let roleta;             // painel da roleta do voto nulo
@@ -52,6 +56,7 @@ let selecionado = null; // cor do candidato escolhido
 let imprimindo = false; // trava os botões enquanto o comprovante sai
 let sorteando = false;  // trava os botões enquanto a roleta gira
 let foiNulo = false;    // o voto saiu da roleta?
+let fimDeJogo = false;  // urna queimou, esperando RECOMEÇAR
 
 // ===== Monta a tela via DOM =====
 function criarElemento(tag, classes, texto) {
@@ -247,8 +252,62 @@ function destacarComprovante(papel) {
     bip(300, 0, 0.15, 'triangle');
     papel.addEventListener('animationend', () => {
         papel.remove();
-        reiniciar();
+        queimarUrna();
     }, { once: true });
+}
+
+// ===== A urna pega fogo =====
+function criarChama() {
+    const chama = criarElemento('div', Math.random() < 0.25 ? 'fumaca' : 'chama');
+    const tamanho = 30 + Math.random() * 70;
+    chama.style.left = `${Math.random() * 100}%`;
+    chama.style.bottom = `${Math.random() * 85}%`;
+    chama.style.width = `${tamanho}px`;
+    chama.style.height = `${tamanho * 1.6}px`;
+    chama.style.animationDelay = `0s, ${Math.random() * 0.5}s`;
+    fogo.appendChild(chama);
+}
+
+function somIncendio() {
+    bip(400, 0, 1.5, 'sawtooth'); // urna "desligando"
+    for (let i = 0; i < 45; i++) {
+        bip(60 + Math.random() * 200, Math.random() * 3.5, 0.04, 'square'); // estalos do fogo
+    }
+}
+
+function queimarUrna() {
+    linhaStatus.textContent = 'ERRO FATAL: ALMA NÃO ENCONTRADA';
+    linhaStatus.classList.add('blink');
+    screen.classList.add('glitch');
+    cabinet.classList.add('tremendo');
+    somIncendio();
+
+    // as chamas vão surgindo aos poucos
+    let quantidade = 0;
+    const acender = setInterval(() => {
+        criarChama();
+        if (++quantidade >= 28) clearInterval(acender);
+    }, 110);
+
+    setTimeout(() => cabinet.classList.add('queimada'), 1200);
+    setTimeout(() => screen.classList.add('desligada'), 2000);
+    setTimeout(() => {
+        fimDeJogo = true;
+        gameOver.classList.remove('oculto');
+        btnRecomecar.focus();
+    }, 3600);
+}
+
+function recomecar() {
+    if (!fimDeJogo) return;
+    fimDeJogo = false;
+
+    gameOver.classList.add('oculto');
+    fogo.innerHTML = '';
+    cabinet.classList.remove('tremendo', 'queimada');
+    screen.classList.remove('glitch', 'desligada'); // a tela "religa" com a animação crt-on
+    reiniciar();
+    linhaStatus.classList.add('blink');
 }
 
 // volta a urna ao estado inicial para o próximo eleitor
@@ -274,9 +333,14 @@ btnAzul.addEventListener('click', () => selecionar('azul'));
 btnVermelho.addEventListener('click', () => selecionar('vermelho'));
 btnConfirma.addEventListener('click', confirmar);
 btnNulo.addEventListener('click', votoNulo);
+btnRecomecar.addEventListener('click', recomecar);
 
 document.addEventListener('keydown', (e) => {
     const tecla = e.key.toLowerCase();
+    if (fimDeJogo) {
+        if (tecla === 'enter') { e.preventDefault(); recomecar(); }
+        return;
+    }
     if (tecla === 'enter') {
         e.preventDefault(); // evita "clicar" o botão que estiver em foco
         if (btnConfirma.classList.contains('visivel')) pressionar(btnConfirma);

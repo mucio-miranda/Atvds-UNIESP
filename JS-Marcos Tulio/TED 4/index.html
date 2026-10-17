@@ -85,8 +85,43 @@
         <footer class="kickplate">
             <span>MOD. 2026 &middot; VOTO NULO SUJEITO A SORTEIO</span>
         </footer>
+
+        <!-- chamas e fumaça criadas via DOM quando a urna queima -->
+        <div class="fogo" id="fogo"></div>
     </main>
 
+    <!-- Tela de fim de jogo -->
+    <div class="game-over oculto" id="gameOver">
+        <h2 class="game-over-titulo">GAME OVER</h2>
+        <p class="game-over-sub">A URNA NÃO AGUENTOU TANTA DEMOCRACIA</p>
+        <button class="btn-recomecar" id="btnRecomecar">RECOMEÇAR</button>
+        <kbd>ENTER</kbd>
+    </div>
+
+    <!-- Miniplayer: só carrega o YouTube quando clicar no play -->
+    <aside class="miniplayer" aria-label="Rádio Protesto">
+        <div class="mp-topo">
+            <span class="mp-led" id="mpLed"></span>
+            <span>RÁDIO PROTESTO</span>
+            <span id="mpContador">1/9</span>
+        </div>
+        <div class="mp-display">
+            <p class="mp-letreiro" id="mpLetreiro"></p>
+        </div>
+        <div class="mp-progresso"><div class="mp-barra" id="mpBarra"></div></div>
+        <div class="mp-tempo">
+            <span id="mpTempo">0:00</span>
+            <span id="mpDuracao">0:00</span>
+        </div>
+        <div class="mp-controles">
+            <button id="mpAnterior" aria-label="Música anterior">&#9664;&#9664;</button>
+            <button id="mpPlay" class="mp-play" aria-label="Tocar">&#9654;</button>
+            <button id="mpProxima" aria-label="Próxima música">&#9654;&#9654;</button>
+        </div>
+        <div class="mp-yt"><div id="ytPlayer"></div></div>
+    </aside>
+
     <script src="script.js"></script>
+    <script src="player.js"></script>
 </body>
 </html>
