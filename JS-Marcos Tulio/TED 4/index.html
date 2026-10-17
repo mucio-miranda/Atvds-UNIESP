@@ -1,1 +1,92 @@
-start
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urna Eleitoral</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="cabinet">
+
+        <!-- Letreiro luminoso (marquee) -->
+        <header class="marquee">
+            <div class="marquee-light">
+                <span class="marquee-sub">JUSTIÇA ELEITORAL DO 3º MUNDO</span>
+                <h1 class="marquee-title">URNA ELEITORAL</h1>
+            </div>
+        </header>
+
+        <!-- Alto-falantes -->
+        <div class="speakers">
+            <div class="grille"></div>
+            <div class="brand">BAALTRON&trade;</div>
+            <div class="grille"></div>
+        </div>
+
+        <!-- Tela CRT -->
+        <section class="bezel">
+            <div class="screen" id="screen">
+                <!-- conteúdo montado via DOM em script.js -->
+            </div>
+        </section>
+
+        <!-- Painel de controle -->
+        <section class="control-panel">
+            <div class="panel-surface">
+                <div class="control">
+                    <span class="led" id="ledAzul"></span>
+                    <button class="arcade-btn azul" id="btnAzul" aria-label="Votar em Baal"></button>
+                    <span class="btn-label">BAAL</span>
+                    <kbd>A</kbd>
+                </div>
+
+                <div class="panel-center">
+                    <div class="screw"></div>
+                    <p id="instrucao">ESCOLHA<br>SEU<br>SENHOR</p>
+                    <button class="btn-confirma" id="btnConfirma">CONFIRMA</button>
+                    <kbd>ENTER</kbd>
+                    <button class="btn-nulo" id="btnNulo">NULO</button>
+                    <kbd>N</kbd>
+                    <div class="screw"></div>
+                </div>
+
+                <div class="control">
+                    <span class="led" id="ledVermelho"></span>
+                    <button class="arcade-btn vermelho" id="btnVermelho" aria-label="Votar em Moloch"></button>
+                    <span class="btn-label">MOLOCH</span>
+                    <kbd>L</kbd>
+                </div>
+            </div>
+        </section>
+
+        <!-- Porta de fichas / cédulas -->
+        <section class="coin-door">
+            <div class="coin-slot">
+                <div class="slot"></div>
+                <span>1 ALMA</span>
+            </div>
+            <div class="ballot-slot">
+                <div class="ballot-mouth"></div>
+                <div class="impressora" id="impressora">
+                    <!-- comprovante montado via DOM em script.js -->
+                </div>
+                <span>COMPROVANTE</span>
+            </div>
+            <div class="coin-slot">
+                <div class="slot"></div>
+                <span>1 ALMA</span>
+            </div>
+        </section>
+
+        <footer class="kickplate">
+            <span>MOD. 2026 &middot; VOTO NULO SUJEITO A SORTEIO</span>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
