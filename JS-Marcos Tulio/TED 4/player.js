@@ -82,7 +82,12 @@ async function criarPlayer() {
         width: 200,
         height: 200,
         videoId: playlist[faixaAtual].ids[tentativa],
-        playerVars: { autoplay: 1, controls: 0, playsinline: 1, origin: location.origin },
+        playerVars: {
+            autoplay: 1,
+            controls: 0,
+            playsinline: 1,
+            ...(location.protocol.startsWith('http') ? { origin: location.origin } : {})
+        },
         events: {
             onReady: (e) => { mostrarFaixa(); e.target.playVideo(); },
             onStateChange: aoMudarEstado,

@@ -504,6 +504,38 @@ kbd {
     border: 3px solid #0a0a0a;
     border-radius: 4px;
     box-shadow: inset 0 0 0 2px #555, inset 0 0 15px #000;
+    position: relative;
+}
+
+/* aviso piscando acima da fenda do comprovante */
+.aviso-retirar {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    z-index: 11;
+    padding: 6px 8px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    white-space: nowrap;
+    color: #111;
+    background: #ffd23f;
+    border: 2px solid #111;
+    box-shadow: 0 0 0 2px #ffd23f, 0 0 18px rgba(255, 210, 63, 0.8);
+    transform: translateX(-50%) scale(0);
+    transition: transform 0.2s ease-out;
+    pointer-events: none;
+}
+
+.aviso-retirar.visivel {
+    transform: translateX(-50%) scale(1);
+    animation: aviso 0.6s steps(1) 0.2s infinite;
+}
+
+@keyframes aviso {
+    50% {
+        color: #ffd23f;
+        background: #111;
+    }
 }
 
 .coin-slot,
@@ -574,7 +606,6 @@ kbd {
         linear-gradient(180deg, rgba(0,0,0,0.25), transparent 14px),
         #f4f1e6;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
-    cursor: pointer;
     /* serrilhado de papel rasgado na ponta */
     clip-path: polygon(0 0, 100% 0, 100% 100%,
         92% 98%, 84% 100%, 76% 98%, 68% 100%, 60% 98%, 52% 100%, 44% 98%,
@@ -614,9 +645,26 @@ kbd {
 }
 
 .papel .dica {
+    margin-top: 2px;
     text-align: center;
-    font-size: 11px;
-    color: #888;
+    font-size: 12px;
+    font-weight: bold;
+    color: #a3000b;
+    animation: blink 0.8s steps(1) infinite;
+}
+
+/* papel pronto: brilha pedindo para ser retirado */
+.papel.pronto {
+    cursor: pointer;
+}
+
+.impressora.pronta {
+    animation: brilho-papel 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes brilho-papel {
+    from { filter: drop-shadow(0 0 2px #ffd23f); }
+    to   { filter: drop-shadow(0 0 12px #ffd23f) brightness(1.08); }
 }
 
 /* comprovante destacado: cai e some */
@@ -809,6 +857,140 @@ kbd {
 
 .game-over kbd {
     font-size: 16px;
+}
+
+/* ================= MINIPLAYER ================= */
+.miniplayer {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 150; /* fica acima até do GAME OVER */
+    width: 230px;
+    padding: 10px;
+    background: linear-gradient(180deg, #2b2b2b, #141414);
+    border: 2px solid #000;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 0 #444, 0 8px 20px rgba(0, 0, 0, 0.7);
+    font-family: 'Press Start 2P', monospace;
+}
+
+.mp-topo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 7px;
+    color: #999;
+    margin-bottom: 8px;
+}
+
+.mp-topo span:nth-child(2) {
+    flex: 1;
+}
+
+.mp-led {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #300;
+}
+
+.mp-led.aceso {
+    background: var(--vermelho-claro);
+    box-shadow: 0 0 8px var(--vermelho);
+    animation: blink 1s steps(1) infinite;
+}
+
+.mp-display {
+    padding: 6px 4px;
+    overflow: hidden;
+    background: #0a1a0f;
+    border-radius: 3px;
+    box-shadow: inset 0 0 8px #000;
+}
+
+.mp-letreiro {
+    display: inline-block;
+    font-family: 'VT323', monospace;
+    font-size: 17px;
+    white-space: nowrap;
+    color: var(--fosforo);
+    text-shadow: 0 0 4px rgba(57, 255, 122, 0.8);
+}
+
+.mp-letreiro.rolando {
+    padding-left: 100%;
+    animation: letreiro 9s linear infinite;
+}
+
+@keyframes letreiro {
+    to { transform: translateX(-100%); }
+}
+
+.mp-progresso {
+    height: 4px;
+    margin-top: 8px;
+    background: #000;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.mp-barra {
+    width: 0;
+    height: 100%;
+    background: var(--fosforo);
+    box-shadow: 0 0 6px var(--fosforo);
+    transition: width 0.5s linear;
+}
+
+.mp-tempo {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+    font-family: 'VT323', monospace;
+    font-size: 13px;
+    color: #777;
+}
+
+.mp-controles {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.mp-controles button {
+    width: 40px;
+    height: 30px;
+    font-size: 10px;
+    font-family: Arial, sans-serif;
+    letter-spacing: -2px;
+    color: #ddd;
+    background: linear-gradient(180deg, #4a4a4a, #222);
+    border: 1px solid #000;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #000;
+}
+
+.mp-controles button:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 #000;
+}
+
+.mp-controles .mp-play {
+    width: 48px;
+    color: #fff;
+    background: linear-gradient(180deg, #ff5a5a, #b3000c);
+}
+
+/* o vídeo fica escondido: só o áudio interessa */
+.mp-yt {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* ================= RESPONSIVO ================= */

@@ -45,6 +45,7 @@ const btnConfirma = document.getElementById('btnConfirma');
 const instrucao = document.getElementById('instrucao');
 const impressora = document.getElementById('impressora');
 const btnNulo = document.getElementById('btnNulo');
+const avisoRetirar = document.getElementById('avisoRetirar');
 const cabinet = document.querySelector('.cabinet');
 const fogo = document.getElementById('fogo');
 const gameOver = document.getElementById('gameOver');
@@ -205,7 +206,7 @@ function confirmar() {
     imprimindo = true;
 
     btnConfirma.classList.remove('visivel');
-    linhaStatus.textContent = 'VOTO CONFIRMADO. RETIRE O COMPROVANTE';
+    linhaStatus.textContent = 'VOTO CONFIRMADO. IMPRIMINDO...';
     linhaStatus.classList.add('blink');
 
     somConfirma();
@@ -239,18 +240,32 @@ function imprimirComprovante(c) {
 
     linhas.forEach(([classe, texto]) => papel.appendChild(criarElemento('p', classe, texto)));
     papel.appendChild(criarElemento('div', 'codigo-barras'));
-    papel.appendChild(criarElemento('p', 'dica', '[ clique para destacar ]'));
+    papel.appendChild(criarElemento('p', 'dica', '>> CLIQUE PARA RETIRAR <<'));
 
     papel.addEventListener('click', () => destacarComprovante(papel));
+
+    // terminou de imprimir: chama a atenção do eleitor
+    papel.addEventListener('animationend', (e) => {
+        if (e.animationName !== 'imprimir') return;
+        papel.classList.add('pronto');
+        impressora.classList.add('pronta');
+        avisoRetirar.classList.add('visivel');
+        linhaStatus.textContent = 'RETIRE SEU COMPROVANTE ▼';
+        [523, 659].forEach((f, i) => bip(f, i * 0.15, 0.15, 'triangle'));
+    });
 
     impressora.appendChild(papel);
 }
 
 function destacarComprovante(papel) {
-    if (papel.classList.contains('destacado')) return;
+    // só dá para retirar depois de sair inteiro da impressora
+    if (!papel.classList.contains('pronto') || papel.classList.contains('destacado')) return;
     papel.classList.add('destacado');
+    impressora.classList.remove('pronta');
+    avisoRetirar.classList.remove('visivel');
     bip(300, 0, 0.15, 'triangle');
-    papel.addEventListener('animationend', () => {
+    papel.addEventListener('animationend', (e) => {
+        if (e.animationName !== 'destacar') return;
         papel.remove();
         queimarUrna();
     }, { once: true });
