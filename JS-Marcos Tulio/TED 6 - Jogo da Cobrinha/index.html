@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neon Snake</title>
+    <title>BitSnake</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23f7931a'/%3E%3Ctext x='32' y='45' font-size='38' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3E%E2%82%BF%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -11,10 +12,14 @@
 <body>
 
     <div class="fundo"></div>
+    <div class="moedas-fundo">
+        <span>₿</span><span>₿</span><span>₿</span><span>₿</span><span>₿</span><span>₿</span>
+    </div>
 
     <main class="container">
         <header class="topo">
-            <h1>NEON<span>SNAKE</span></h1>
+            <h1 class="logo"><span class="simbolo">₿</span>IT<span class="destaque">SNAKE</span></h1>
+
             <div class="placares">
                 <div class="placar">
                     <small>PONTOS</small>
@@ -25,9 +30,17 @@
                     <strong id="recorde">0</strong>
                 </div>
                 <div class="placar">
-                    <small>NÍVEL</small>
-                    <strong id="nivel">1</strong>
+                    <small>FASE</small>
+                    <strong id="fase">1/6</strong>
                 </div>
+            </div>
+
+            <div class="progresso">
+                <div class="progresso-info">
+                    <span id="nomeFase">Gênesis</span>
+                    <span id="progressoTexto">₿ 0 / 5</span>
+                </div>
+                <div class="barra"><div class="barra-preenchida" id="barra"></div></div>
             </div>
         </header>
 
@@ -35,10 +48,21 @@
             <canvas id="jogo" width="480" height="480"></canvas>
 
             <div class="overlay ativo" id="inicio">
-                <h2>NEON<span>SNAKE</span></h2>
-                <p>Guie o quadrado azul até o vermelho para crescer.<br>Não bata no próprio rabo!</p>
-                <button id="btnIniciar">JOGAR</button>
+                <div class="moeda-logo">₿</div>
+                <h2><span class="laranja">BIT</span>SNAKE</h2>
+                <p>Guie o quadrado azul até os bitcoins para crescer.<br>Não bata no próprio rabo!</p>
+                <button class="btn" id="btnIniciar">JOGAR</button>
+                <div class="selecao">
+                    <small>ESCOLHA A FASE</small>
+                    <div class="lista-fases" id="listaFases"></div>
+                </div>
                 <small>Setas para mover · Espaço para pausar</small>
+            </div>
+
+            <div class="overlay" id="transicao">
+                <small class="rotulo" id="transicaoRotulo">FASE 1</small>
+                <h2 id="transicaoTitulo">Gênesis</h2>
+                <p id="transicaoTexto">Colete 5 bitcoins.</p>
             </div>
 
             <div class="overlay" id="pausa">
@@ -49,8 +73,12 @@
             <div class="overlay" id="gameover">
                 <h2 class="titulo-gameover">GAMEOVER</h2>
                 <p class="pontuacao-final">Pontuação: <strong id="pontuacaoFinal">0</strong></p>
+                <p class="fase-final" id="faseFinal">Fase 1 · Gênesis</p>
                 <p class="novo-recorde" id="novoRecorde">NOVO RECORDE!</p>
-                <button id="btnReiniciar">JOGAR NOVAMENTE</button>
+                <div class="botoes">
+                    <button class="btn" id="btnReiniciar">TENTAR DE NOVO</button>
+                    <button class="btn secundario" id="btnMenu">MENU</button>
+                </div>
             </div>
         </div>
 
