@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Cobrinha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Jogo da Cobrinha</h1>
+        <p id="placar">Pontuação: 0</p>
+
+        <div class="tela">
+            <canvas id="jogo" width="400" height="400"></canvas>
+            <div id="gameover">
+                <h2>GAMEOVER</h2>
+                <p id="pontuacaoFinal"></p>
+                <button id="btnReiniciar">Jogar novamente</button>
+            </div>
+        </div>
+
+        <p class="dica">Use as setas do teclado para mover o quadrado azul.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

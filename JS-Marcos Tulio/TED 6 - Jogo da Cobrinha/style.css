@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef2f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 16px;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+#placar {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.tela {
+    position: relative;
+    width: 400px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    border-radius: 5px;
+}
+
+#gameover {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    border-radius: 5px;
+}
+
+#gameover h2 {
+    font-size: 40px;
+    color: #e74c3c;
+}
+
+#gameover p {
+    font-size: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1e8449;
+}
+
+.dica {
+    margin-top: 15px;
+    color: #888;
+    font-size: 14px;
+}
