@@ -3,26 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo da Cobrinha</title>
+    <title>Neon Snake</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>Jogo da Cobrinha</h1>
-        <p id="placar">Pontuação: 0</p>
+    <div class="fundo"></div>
 
-        <div class="tela">
-            <canvas id="jogo" width="400" height="400"></canvas>
-            <div id="gameover">
-                <h2>GAMEOVER</h2>
-                <p id="pontuacaoFinal"></p>
-                <button id="btnReiniciar">Jogar novamente</button>
+    <main class="container">
+        <header class="topo">
+            <h1>NEON<span>SNAKE</span></h1>
+            <div class="placares">
+                <div class="placar">
+                    <small>PONTOS</small>
+                    <strong id="pontos">0</strong>
+                </div>
+                <div class="placar">
+                    <small>RECORDE</small>
+                    <strong id="recorde">0</strong>
+                </div>
+                <div class="placar">
+                    <small>NÍVEL</small>
+                    <strong id="nivel">1</strong>
+                </div>
+            </div>
+        </header>
+
+        <div class="tela" id="tela">
+            <canvas id="jogo" width="480" height="480"></canvas>
+
+            <div class="overlay ativo" id="inicio">
+                <h2>NEON<span>SNAKE</span></h2>
+                <p>Guie o quadrado azul até o vermelho para crescer.<br>Não bata no próprio rabo!</p>
+                <button id="btnIniciar">JOGAR</button>
+                <small>Setas para mover · Espaço para pausar</small>
+            </div>
+
+            <div class="overlay" id="pausa">
+                <h2>PAUSADO</h2>
+                <small>Pressione espaço para continuar</small>
+            </div>
+
+            <div class="overlay" id="gameover">
+                <h2 class="titulo-gameover">GAMEOVER</h2>
+                <p class="pontuacao-final">Pontuação: <strong id="pontuacaoFinal">0</strong></p>
+                <p class="novo-recorde" id="novoRecorde">NOVO RECORDE!</p>
+                <button id="btnReiniciar">JOGAR NOVAMENTE</button>
             </div>
         </div>
 
-        <p class="dica">Use as setas do teclado para mover o quadrado azul.</p>
-    </div>
+        <div class="controles">
+            <button data-dir="ArrowUp" class="seta cima">▲</button>
+            <button data-dir="ArrowLeft" class="seta esquerda">◀</button>
+            <button data-dir="ArrowDown" class="seta baixo">▼</button>
+            <button data-dir="ArrowRight" class="seta direita">▶</button>
+        </div>
+    </main>
 
     <script src="script.js"></script>
 </body>
