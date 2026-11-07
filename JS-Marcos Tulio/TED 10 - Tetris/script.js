@@ -335,7 +335,7 @@ function nomeNivel() {
 }
 
 function velocidade() {
-    return Math.max(70, 800 * Math.pow(0.85, nivel - 1));
+    return Math.max(60, 600 * Math.pow(0.82, nivel - 1));
 }
 
 function mostrarBanner(rotulo, titulo) {
@@ -444,9 +444,26 @@ function desenharMoeda(c, cx, cy, raio) {
     c.restore();
 }
 
-function desenharBloco(c, px, py, tamanho, valor, cor, alfa = 1) {
+const MARGEM_SPRITE = 10;
+const sprites = new Map();
+
+function sprite(valor, cor, tamanho) {
+    const chave = `${valor}-${cor}-${tamanho}`;
+    if (!sprites.has(chave)) {
+        const c = document.createElement("canvas");
+        c.width = c.height = tamanho + MARGEM_SPRITE * 2;
+        pintarBloco(c.getContext("2d"), MARGEM_SPRITE, MARGEM_SPRITE, tamanho, valor, cor);
+        sprites.set(chave, c);
+    }
+    return sprites.get(chave);
+}
+
+function desenharBloco(c, px, py, tamanho, valor, cor) {
+    c.drawImage(sprite(valor, cor, tamanho), px - MARGEM_SPRITE, py - MARGEM_SPRITE);
+}
+
+function pintarBloco(c, px, py, tamanho, valor, cor) {
     c.save();
-    c.globalAlpha = alfa;
 
     if (valor === BITCOIN) {
         c.fillStyle = "#2a1a05";
@@ -476,22 +493,29 @@ function desenharBloco(c, px, py, tamanho, valor, cor, alfa = 1) {
     c.restore();
 }
 
-function desenharFundo() {
-    ctx.fillStyle = "#0a0a0f";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.strokeStyle = "rgba(247, 147, 26, 0.07)";
-    ctx.lineWidth = 1;
-    ctx.beginPath();
+const fundo = document.createElement("canvas");
+fundo.width = canvas.width;
+fundo.height = canvas.height;
+(() => {
+    const c = fundo.getContext("2d");
+    c.fillStyle = "#0a0a0f";
+    c.fillRect(0, 0, fundo.width, fundo.height);
+    c.strokeStyle = "rgba(247, 147, 26, 0.07)";
+    c.lineWidth = 1;
+    c.beginPath();
     for (let x = 1; x < COLUNAS; x++) {
-        ctx.moveTo(x * CEL + 0.5, 0);
-        ctx.lineTo(x * CEL + 0.5, canvas.height);
+        c.moveTo(x * CEL + 0.5, 0);
+        c.lineTo(x * CEL + 0.5, fundo.height);
     }
     for (let y = 1; y < LINHAS; y++) {
-        ctx.moveTo(0, y * CEL + 0.5);
-        ctx.lineTo(canvas.width, y * CEL + 0.5);
+        c.moveTo(0, y * CEL + 0.5);
+        c.lineTo(fundo.width, y * CEL + 0.5);
     }
-    ctx.stroke();
+    c.stroke();
+})();
+
+function desenharFundo() {
+    ctx.drawImage(fundo, 0, 0);
 }
 
 function desenharTabuleiro() {
@@ -548,6 +572,8 @@ function desenharPeca() {
 function desenharEfeitos(delta) {
     const passo = delta / 16.67;
 
+    ctx.save();
+    ctx.globalCompositeOperation = "lighter";
     particulas.forEach(p => {
         p.x += p.vx * passo;
         p.y += p.vy * passo;
@@ -555,15 +581,13 @@ function desenharEfeitos(delta) {
         p.vx *= 0.97;
         p.vida -= 0.02 * passo;
 
-        ctx.save();
         ctx.globalAlpha = Math.max(p.vida, 0);
-        ctx.shadowColor = p.cor;
-        ctx.shadowBlur = 8;
         ctx.fillStyle = p.cor;
         ctx.fillRect(p.x - 2, p.y - 2, 4, 4);
-        ctx.restore();
     });
+    ctx.restore();
     particulas = particulas.filter(p => p.vida > 0);
+    if (particulas.length > 400) particulas.splice(0, particulas.length - 400);
 
     textos.forEach(t => {
         t.y -= 0.6 * passo;
@@ -616,6 +640,10 @@ function loop(tempo) {
     if (ultimoTempo === undefined) ultimoTempo = tempo;
     const delta = Math.min(tempo - ultimoTempo, 100);
     ultimoTempo = tempo;
+
+    if (estado === "jogando") {
+        repetirTeclas(delta);
+    }
 
     if (estado === "jogando") {
         acumuladoQueda += delta;
@@ -684,13 +712,47 @@ const MAPA_TECLAS = {
     Shift: "guardar"
 };
 
+const ATRASO_REPETICAO = 140;
+const INTERVALO_REPETICAO = { esquerda: 45, direita: 45, descer: 30 };
+const segurando = {};
+
+function repetirTeclas(delta) {
+    Object.entries(segurando).forEach(([acao, tecla]) => {
+        tecla.tempo += delta;
+        if (tecla.tempo < ATRASO_REPETICAO) return;
+        tecla.resto += delta;
+        while (tecla.resto >= INTERVALO_REPETICAO[acao] && estado === "jogando") {
+            executar(acao);
+            tecla.resto -= INTERVALO_REPETICAO[acao];
+        }
+    });
+}
+
+document.addEventListener("keyup", evento => {
+    const acao = MAPA_TECLAS[evento.key];
+    if (acao) delete segurando[acao];
+});
+
+window.addEventListener("blur", () => {
+    Object.keys(segurando).forEach(acao => delete segurando[acao]);
+});
+
 document.addEventListener("keydown", evento => {
     const acao = MAPA_TECLAS[evento.key];
 
     if (acao) {
         evento.preventDefault();
-        if (estado === "inicio" && evento.key === " ") iniciar();
-        else if (!(evento.repeat && (acao === "soltar" || acao === "guardar" || acao.startsWith("girar")))) executar(acao);
+        if (evento.repeat) return;
+        if (estado === "inicio" && evento.key === " ") {
+            iniciar();
+            return;
+        }
+        executar(acao);
+        if (INTERVALO_REPETICAO[acao]) {
+            if (acao === "esquerda") delete segurando.direita;
+            if (acao === "direita") delete segurando.esquerda;
+            segurando[acao] = { tempo: 0, resto: 0 };
+        }
     } else if (evento.key === "p" || evento.key === "P" || evento.key === "Escape") {
         alternarPausa();
     } else if (evento.key === "Enter" && (estado === "inicio" || estado === "gameover")) {
@@ -713,8 +775,8 @@ document.querySelectorAll(".controles button").forEach(botao => {
         executar(acao);
         if (repete) {
             atraso = setTimeout(() => {
-                intervalo = setInterval(() => executar(acao), 70);
-            }, 180);
+                intervalo = setInterval(() => executar(acao), INTERVALO_REPETICAO[acao]);
+            }, ATRASO_REPETICAO);
         }
     });
     ["pointerup", "pointerleave", "pointercancel"].forEach(tipo => botao.addEventListener(tipo, parar));

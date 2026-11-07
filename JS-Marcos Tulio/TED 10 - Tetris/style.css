@@ -17,7 +17,10 @@
 
 body {
     font-family: "Inter", Arial, sans-serif;
-    background-color: #09090b;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(247, 147, 26, 0.18), transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(56, 189, 248, 0.1), transparent 45%),
+        #09090b;
     color: var(--texto);
     min-height: 100vh;
     display: flex;
@@ -26,49 +29,6 @@ body {
     align-items: center;
     padding: 20px 16px;
     overflow-x: hidden;
-}
-
-.fundo {
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    background:
-        radial-gradient(circle at 15% 20%, rgba(247, 147, 26, 0.22), transparent 45%),
-        radial-gradient(circle at 85% 85%, rgba(56, 189, 248, 0.12), transparent 45%),
-        linear-gradient(rgba(247, 147, 26, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(247, 147, 26, 0.04) 1px, transparent 1px),
-        #09090b;
-    background-size: auto, auto, 40px 40px, 40px 40px, auto;
-}
-
-.moedas-fundo {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.moedas-fundo span {
-    position: absolute;
-    bottom: -80px;
-    font-size: 48px;
-    font-weight: bold;
-    color: var(--laranja);
-    opacity: 0.08;
-    animation: subir 18s linear infinite;
-}
-
-.moedas-fundo span:nth-child(1) { left: 5%; animation-delay: 0s; }
-.moedas-fundo span:nth-child(2) { left: 20%; animation-delay: -6s; font-size: 32px; }
-.moedas-fundo span:nth-child(3) { left: 38%; animation-delay: -12s; font-size: 64px; }
-.moedas-fundo span:nth-child(4) { left: 64%; animation-delay: -3s; }
-.moedas-fundo span:nth-child(5) { left: 82%; animation-delay: -9s; font-size: 36px; }
-.moedas-fundo span:nth-child(6) { left: 94%; animation-delay: -15s; font-size: 56px; }
-
-@keyframes subir {
-    from { transform: translateY(0) rotate(0deg); }
-    to { transform: translateY(-120vh) rotate(360deg); }
 }
 
 .jogo {
@@ -115,9 +75,8 @@ h1, h2, .btn, .estat strong, .nome-nivel, .banner, kbd {
 .caixa {
     padding: 12px;
     border-radius: 16px;
-    background: var(--vidro);
+    background: rgba(18, 14, 10, 0.88);
     border: 1px solid var(--borda);
-    backdrop-filter: blur(12px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     text-align: center;
 }
@@ -256,8 +215,7 @@ h1, h2, .btn, .estat strong, .nome-nivel, .banner, kbd {
     gap: 14px;
     padding: 18px;
     text-align: center;
-    background: rgba(9, 9, 11, 0.8);
-    backdrop-filter: blur(6px);
+    background: rgba(9, 9, 11, 0.85);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.4s;
