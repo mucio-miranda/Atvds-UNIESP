@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitMiner</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23f7931a'/%3E%3Ctext x='32' y='45' font-size='38' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3E%E2%82%BF%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="jogo">
+        <aside class="painel esquerda">
+            <h1 class="logo"><span class="simbolo">₿</span>IT<span class="destaque">MINER</span></h1>
+
+            <div class="caixa estatisticas">
+                <div class="estat">
+                    <small>PONTOS</small>
+                    <strong id="pontos">0</strong>
+                </div>
+                <div class="estat">
+                    <small>RECORDE</small>
+                    <strong id="recorde">0</strong>
+                </div>
+                <div class="estat">
+                    <small>₿ COLETADOS</small>
+                    <strong id="moedas">0</strong>
+                </div>
+                <div class="estat">
+                    <small>LINHAS MINERADAS</small>
+                    <strong id="linhas">0</strong>
+                </div>
+            </div>
+
+            <div class="caixa">
+                <small>PICARETAS</small>
+                <div class="picaretas" id="picaretas"></div>
+            </div>
+        </aside>
+
+        <section class="tabuleiro">
+            <canvas id="tabuleiro" width="360" height="576"></canvas>
+
+            <div class="banner" id="banner">
+                <small id="bannerRotulo">HALVING!</small>
+                <strong id="bannerTitulo">Nível 2</strong>
+            </div>
+
+            <div class="overlay ativo" id="inicio">
+                <div class="moeda-logo">₿</div>
+                <h2><span class="laranja">BIT</span>MINER</h2>
+                <p>Blocos de minério despencam na mina.<br>
+                   Suba pelas pilhas, desvie das quedas e <strong>colete bitcoins</strong>.<br>
+                   Complete uma linha para minerá-la!</p>
+                <button class="btn" id="btnIniciar">JOGAR</button>
+                <ul class="teclas">
+                    <li><kbd>←</kbd><kbd>→</kbd> andar / escalar</li>
+                    <li><kbd>↑</kbd> pular</li>
+                    <li><kbd>Espaço</kbd> picareta à frente</li>
+                    <li><kbd>↓</kbd> picareta abaixo</li>
+                    <li><kbd>P</kbd> pausar</li>
+                </ul>
+            </div>
+
+            <div class="overlay" id="pausa">
+                <h2>PAUSADO</h2>
+                <small>Pressione P para continuar</small>
+            </div>
+
+            <div class="overlay" id="gameover">
+                <h2 class="titulo-gameover">GAMEOVER</h2>
+                <p class="motivo" id="motivo">Esmagado por um bloco!</p>
+                <p class="pontuacao-final">Pontuação: <strong id="pontuacaoFinal">0</strong></p>
+                <p id="resumoFinal">Nível 1 · 0 ₿ · 0 linhas</p>
+                <p class="novo-recorde" id="novoRecorde">NOVO RECORDE!</p>
+                <button class="btn" id="btnReiniciar">JOGAR NOVAMENTE</button>
+            </div>
+        </section>
+
+        <aside class="painel direita">
+            <div class="caixa">
+                <small>PRÓXIMA QUEDA</small>
+                <canvas id="proxima" width="120" height="90"></canvas>
+            </div>
+
+            <div class="caixa nivel">
+                <small>NÍVEL <strong id="nivel">1</strong></small>
+                <strong class="nome-nivel" id="nomeNivel">Gênesis</strong>
+                <div class="barra"><div class="barra-preenchida" id="barra"></div></div>
+                <small id="faltam">6 ₿ para o halving</small>
+            </div>
+
+            <div class="caixa dicas">
+                <small>DICAS</small>
+                <p>A sombra mostra onde o bloco vai cair.</p>
+                <p>Cada ₿ recarrega uma picareta.</p>
+                <p>₿ dourado vale 5x, mas some rápido!</p>
+            </div>
+        </aside>
+    </main>
+
+    <div class="controles">
+        <button data-acao="esquerda">◀</button>
+        <button data-acao="pular">▲</button>
+        <button data-acao="direita">▶</button>
+        <button data-acao="cavarBaixo" class="pequeno">⛏ BAIXO</button>
+        <button data-acao="cavarFrente" class="pequeno">⛏ FRENTE</button>
+        <button data-acao="pausar" class="pequeno">PAUSA</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
