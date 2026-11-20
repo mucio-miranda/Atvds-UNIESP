@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitBomb</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='30' cy='36' r='24' fill='%23111'/%3E%3Ctext x='30' y='47' font-size='30' font-family='Arial' font-weight='bold' fill='%23f7931a' text-anchor='middle'%3E%E2%82%BF%3C/text%3E%3Cpath d='M44 14 L52 6' stroke='%23f7931a' stroke-width='5'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="jogo">
+        <aside class="painel esquerda">
+            <h1 class="logo"><span class="simbolo">₿</span>IT<span class="destaque">BOMB</span></h1>
+
+            <div class="caixa estatisticas">
+                <div class="estat">
+                    <small>PONTOS</small>
+                    <strong id="pontos">0</strong>
+                </div>
+                <div class="estat">
+                    <small>RECORDE</small>
+                    <strong id="recorde">0</strong>
+                </div>
+                <div class="estat">
+                    <small>₿ COLETADOS</small>
+                    <strong id="moedas">0</strong>
+                </div>
+                <div class="estat">
+                    <small>VIDAS</small>
+                    <strong id="vidas" class="vidas">❤❤❤</strong>
+                </div>
+            </div>
+        </aside>
+
+        <section class="tabuleiro">
+            <canvas id="tabuleiro" width="600" height="520"></canvas>
+
+            <div class="banner" id="banner">
+                <small id="bannerRotulo">FASE 1</small>
+                <strong id="bannerTitulo">Gênesis</strong>
+            </div>
+
+            <div class="overlay ativo" id="inicio">
+                <div class="bomba-logo">₿</div>
+                <h2><span class="laranja">BIT</span>BOMB</h2>
+                <p>Exploda caixas e cofres para minerar <strong>bitcoins</strong>.<br>
+                   Derrote os ursos do bear market e ache o <span class="laranja">portal</span> escondido para avançar!</p>
+                <button class="btn" id="btnIniciar">JOGAR</button>
+                <ul class="teclas">
+                    <li><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> andar</li>
+                    <li><kbd>Espaço</kbd> soltar bomba</li>
+                    <li><kbd>WASD</kbd> também anda</li>
+                    <li><kbd>P</kbd> pausar</li>
+                </ul>
+            </div>
+
+            <div class="overlay" id="pausa">
+                <h2>PAUSADO</h2>
+                <small>Pressione P para continuar</small>
+            </div>
+
+            <div class="overlay" id="gameover">
+                <h2 class="titulo-gameover">GAMEOVER</h2>
+                <p class="pontuacao-final">Pontuação: <strong id="pontuacaoFinal">0</strong></p>
+                <p id="resumoFinal">Fase 1 · 0 ₿ · 0 ursos</p>
+                <p class="novo-recorde" id="novoRecorde">NOVO RECORDE!</p>
+                <button class="btn" id="btnReiniciar">JOGAR NOVAMENTE</button>
+            </div>
+        </section>
+
+        <aside class="painel direita">
+            <div class="caixa nivel">
+                <small>FASE <strong id="fase">1</strong></small>
+                <strong class="nome-nivel" id="nomeFase">Gênesis</strong>
+                <small id="objetivo">Ursos restantes: 3</small>
+            </div>
+
+            <div class="caixa poderes">
+                <small>PODERES</small>
+                <div class="poder"><span>💣</span> Bombas <strong id="poderBombas">1</strong></div>
+                <div class="poder"><span>🔥</span> Alcance <strong id="poderFogo">2</strong></div>
+                <div class="poder"><span>⚡</span> Velocidade <strong id="poderVelocidade">1</strong></div>
+            </div>
+
+            <div class="caixa dicas">
+                <small>ITENS</small>
+                <p><b class="laranja">₿</b> moeda: +100 pontos</p>
+                <p>Cofres aguentam 3 explosões e soltam um baú de ₿.</p>
+                <p>O portal só abre sem nenhum urso no mapa.</p>
+            </div>
+        </aside>
+    </main>
+
+    <div class="controles">
+        <span></span>
+        <button data-dir="cima">▲</button>
+        <span></span>
+        <button data-dir="esquerda">◀</button>
+        <button data-acao="bomba" class="bomba">💣</button>
+        <button data-dir="direita">▶</button>
+        <span></span>
+        <button data-dir="baixo">▼</button>
+        <button data-acao="pausa" class="pequeno">PAUSA</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

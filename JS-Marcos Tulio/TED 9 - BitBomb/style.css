@@ -12,7 +12,7 @@
     --suave: #a1a1aa;
     --vidro: rgba(18, 14, 10, 0.65);
     --borda: rgba(247, 147, 26, 0.25);
-    --altura-tabuleiro: min(600px, calc(100vh - 40px));
+    --altura-tabuleiro: min(520px, calc(100vh - 40px));
 }
 
 body {
@@ -156,7 +156,7 @@ h1, h2, .btn, .estat strong, .nome-nivel, .banner, kbd {
 .tabuleiro {
     position: relative;
     height: var(--altura-tabuleiro);
-    aspect-ratio: 1 / 2;
+    aspect-ratio: 15 / 13;
     border-radius: 14px;
     overflow: hidden;
     border: 2px solid rgba(247, 147, 26, 0.6);
@@ -444,25 +444,36 @@ kbd {
     }
 }
 
-.picaretas {
+.bomba-logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font: bold 30px Arial, sans-serif;
+    color: var(--laranja);
+    background: radial-gradient(circle at 35% 30%, #52525b, #09090b);
+    box-shadow: 0 0 30px rgba(247, 147, 26, 0.5), inset 0 0 0 2px rgba(247, 147, 26, 0.4);
+}
+
+.vidas {
+    color: #f43f5e !important;
+    letter-spacing: 2px;
+}
+
+.poderes .poder {
     display: flex;
-    justify-content: center;
-    gap: 4px;
-    font-size: 20px;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--suave);
+    margin-top: 6px;
 }
 
-.picaretas span {
-    filter: drop-shadow(0 0 4px rgba(247, 147, 26, 0.7));
-}
-
-.picaretas .vazia {
-    opacity: 0.2;
-    filter: grayscale(1);
-}
-
-.motivo {
-    color: var(--laranja-claro) !important;
-    font-weight: 600;
+.poderes .poder strong {
+    margin-left: auto;
+    font-family: "Orbitron", sans-serif;
+    color: var(--laranja-claro);
 }
 
 .dicas p {
@@ -473,17 +484,36 @@ kbd {
     margin-top: 6px;
 }
 
+.laranja {
+    color: var(--laranja);
+}
+
+#objetivo {
+    margin-top: 4px;
+    font-size: 11px;
+    letter-spacing: 0;
+}
+
+.controles {
+    grid-template-columns: repeat(3, 64px);
+}
+
+.controles span {
+    display: block;
+}
+
+.controles .bomba {
+    font-size: 24px;
+}
+
 @media (max-width: 760px) {
-    #proxima {
-        width: 80px;
-        height: 60px;
+    .tabuleiro {
+        height: auto;
+        width: 100%;
+        min-height: 0;
     }
 
     .dicas {
         display: none;
-    }
-
-    .picaretas {
-        font-size: 15px;
     }
 }
