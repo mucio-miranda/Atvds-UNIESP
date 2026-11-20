@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To the Moon</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230b1026'/%3E%3Ccircle cx='40' cy='22' r='10' fill='%23e5e7eb'/%3E%3Ctext x='26' y='50' font-size='26' font-family='Arial' font-weight='bold' fill='%23f7931a' text-anchor='middle'%3E%E2%82%BF%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="jogo">
+        <aside class="painel esquerda">
+            <h1 class="logo">TO THE <span class="destaque">MOON</span></h1>
+
+            <div class="caixa estatisticas">
+                <div class="estat">
+                    <small>ALTITUDE</small>
+                    <strong id="altitude">0 km</strong>
+                </div>
+                <div class="estat">
+                    <small>PONTOS</small>
+                    <strong id="pontos">0</strong>
+                </div>
+                <div class="estat">
+                    <small>RECORDE</small>
+                    <strong id="recorde">0</strong>
+                </div>
+                <div class="estat">
+                    <small>₿ COLETADOS</small>
+                    <strong id="moedas">0</strong>
+                </div>
+            </div>
+        </aside>
+
+        <section class="tabuleiro">
+            <canvas id="tabuleiro" width="400" height="640"></canvas>
+
+            <div class="banner" id="banner">
+                <small id="bannerRotulo">NOVA FASE</small>
+                <strong id="bannerTitulo">Estratosfera</strong>
+            </div>
+
+            <div class="overlay ativo" id="inicio">
+                <div class="lua-logo">₿</div>
+                <h2>TO THE <span class="laranja">MOON</span></h2>
+                <p>Leve o foguete do Bitcoin até a Lua!<br>
+                   Desvie de asteroides e satélites, pegue <strong>₿</strong> e não deixe o <span class="laranja">combustível</span> acabar.</p>
+                <button class="btn" id="btnIniciar">DECOLAR</button>
+                <ul class="teclas">
+                    <li><kbd>←</kbd><kbd>→</kbd> mover</li>
+                    <li><kbd>Espaço</kbd> turbo</li>
+                    <li><kbd>Mouse</kbd> arrastar</li>
+                    <li><kbd>P</kbd> pausar</li>
+                </ul>
+            </div>
+
+            <div class="overlay" id="pausa">
+                <h2>PAUSADO</h2>
+                <small>Pressione P para continuar</small>
+            </div>
+
+            <div class="overlay" id="gameover">
+                <h2 class="titulo-gameover" id="tituloFinal">GAMEOVER</h2>
+                <p class="motivo" id="motivo">O foguete explodiu!</p>
+                <p class="pontuacao-final">Pontuação: <strong id="pontuacaoFinal">0</strong></p>
+                <p id="resumoFinal">0 km · 0 ₿</p>
+                <p class="novo-recorde" id="novoRecorde">NOVO RECORDE!</p>
+                <button class="btn" id="btnReiniciar">DECOLAR DE NOVO</button>
+            </div>
+        </section>
+
+        <aside class="painel direita">
+            <div class="caixa nivel">
+                <small>FASE</small>
+                <strong class="nome-nivel" id="nomeFase">Decolagem</strong>
+                <div class="barra"><div class="barra-preenchida" id="barraLua"></div></div>
+                <small id="faltaLua">384.400 km até a Lua</small>
+            </div>
+
+            <div class="caixa combustivel">
+                <small>COMBUSTÍVEL</small>
+                <div class="barra grossa"><div class="barra-preenchida" id="barraCombustivel"></div></div>
+                <small id="escudo" class="escudo">🛡 Escudo ativo</small>
+            </div>
+
+            <div class="caixa dicas">
+                <small>ITENS</small>
+                <p><b class="laranja">₿</b> moeda: +100 pontos</p>
+                <p><b class="verde">⛽</b> galão: +35% de combustível</p>
+                <p><b class="ciano">🛡</b> escudo: aguenta uma batida</p>
+                <p>O turbo sobe mais rápido, mas gasta 3x mais.</p>
+            </div>
+        </aside>
+    </main>
+
+    <div class="controles">
+        <button data-acao="esquerda">◀</button>
+        <button data-acao="turbo" class="pequeno">TURBO</button>
+        <button data-acao="direita">▶</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
